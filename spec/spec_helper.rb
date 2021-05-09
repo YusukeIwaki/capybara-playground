@@ -107,5 +107,7 @@ RSpec.configure do |config|
   config.before(:suite) do
     require 'test_app'
     Capybara.app = TestApp
+    Capybara.server = :webrick
+    Capybara.default_driver = :selenium_chrome
   end
 end
