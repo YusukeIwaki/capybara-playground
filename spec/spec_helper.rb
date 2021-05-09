@@ -105,9 +105,10 @@ RSpec.configure do |config|
   end
 
   config.before(:suite) do
+    require 'capybara/apparition'
     require 'test_app'
     Capybara.app = TestApp
     Capybara.server = :webrick
-    Capybara.default_driver = :selenium_chrome
+    Capybara.default_driver = :apparition
   end
 end
