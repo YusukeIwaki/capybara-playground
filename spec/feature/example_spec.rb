@@ -55,4 +55,18 @@ RSpec.describe 'example' do
     end
     expect(page).to have_content('clicked')
   end
+
+  it 'always returns page title/url' do
+    visit '/iframe'
+    expect(title).to include('iframe')
+    expect(current_url).to include('/iframe')
+
+    iframe = find('iframe')
+    switch_to_frame(iframe)
+
+    expect(title).to include('iframe')
+    expect(current_url).to include('/iframe')
+
+    switch_to_frame(:top)
+  end
 end

@@ -45,4 +45,32 @@ class TestApp < Sinatra::Base
     </html>
     HTML
   }
+
+  get('/title') {
+    title = params[:title] || 'DEFAULT TITLE'
+    <<~HTML
+    <html>
+    <head>
+    <title>#{title}</title>
+    </head>
+    <body>
+    <h2>This page is title:#{title}</h2>
+    </body>
+    </html>
+    HTML
+  }
+
+  get('/iframe') {
+    <<~HTML
+    <html>
+    <head>
+    <title>iframe owner page</title>
+    </head>
+    <body>
+    iframe
+    <iframe name="frame1" src="/title"></iframe>
+    </body>
+    </html>
+    HTML
+  }
 end
