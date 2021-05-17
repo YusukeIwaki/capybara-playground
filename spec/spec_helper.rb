@@ -106,6 +106,9 @@ RSpec.configure do |config|
 
   config.before(:suite) do
     require 'capybara/apparition'
+    Capybara.register_driver :apparition do |app|
+      Capybara::Apparition::Driver.new(app, headless: false)
+    end
     require 'test_app'
     Capybara.app = TestApp
     Capybara.server = :webrick
