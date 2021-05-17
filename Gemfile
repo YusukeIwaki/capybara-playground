@@ -5,7 +5,7 @@ source "https://rubygems.org"
 gem 'rspec'
 
 gem 'capybara'
-gem 'selenium-webdriver'
+gem 'capybara-playwright-driver', '0.0.0-r1'
 gem 'sinatra'
 gem 'webrick'
 

@@ -105,9 +105,18 @@ RSpec.configure do |config|
   end
 
   config.before(:suite) do
+    require 'capybara-playwright-driver'
+    Capybara.register_driver(:playwright) do |app|
+      Capybara::Playwright::Driver.new(app,
+        playwright_cli_executable_path: './node_modules/.bin/playwright',
+        browser_type: :firefox,
+        headless: false,
+      )
+    end
+
     require 'test_app'
     Capybara.app = TestApp
     Capybara.server = :webrick
-    Capybara.default_driver = :selenium_chrome
+    Capybara.default_driver = :playwright
   end
 end
